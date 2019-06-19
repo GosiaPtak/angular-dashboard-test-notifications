@@ -1,0 +1,69 @@
+<div class="container d-flex vh-100">
+  <div class="row align-self-center w-100">
+    <div class="col-6 mx-auto">
+      <div class="card m-0 p-0">
+        <span *ngIf="errorMessage"
+              class="alert alert-danger login-result-message"
+              role="alert">
+          {{ errorMessage }}
+        </span>
+        <div class="card-body">
+          <form (ngSubmit)="handleSubmit()"
+                #loginForm="ngForm"
+                novalidate>
+            <div class="form-group">
+              <label for="inlineFormInputLogin">User Name
+                <sup class="text-danger">*</sup>
+              </label>
+              <input required
+                     #login="ngModel"
+                     [(ngModel)]="user.login"
+                     [class.is-invalid]="login.invalid && login.touched"
+                     type="login"
+                     name="login"
+                     class="form-control"
+                     id="inlineFormInputLogin"
+                     placeholder="Enter Username">
+              <small class="text-danger"
+                     *ngIf="login.touched">
+                <span *ngIf="login.errors?.required">
+                  Pole
+                  <em>User name</em>
+                  jest puste
+                </span>
+              </small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password
+                <sup class="text-danger">*</sup>
+              </label>
+              <input required
+                     type="password"
+                     class="form-control field-password"
+                     #password="ngModel"
+                     [(ngModel)]="user.password"
+                     name="password"
+                     id="exampleInputPassword1"
+                     placeholder="Password">
+
+              <small class="text-danger"
+                     *ngIf="password.touched">
+                <span *ngIf="password.errors?.required">
+                  Pole
+                  <em>password</em>
+                  jest puste
+                </span>
+              </small>
+            </div>
+
+            <button type="submit"
+                    class="btn btn-primary submit-form"
+                    [disabled]="loginForm.invalid">
+              Zaloguj się
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

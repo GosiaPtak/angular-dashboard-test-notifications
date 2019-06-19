@@ -1,0 +1,8 @@
+.list-group-item[data-toggle].collapsed:after {
+  content: "+";
+}
+
+.list-group-item[data-toggle]:not(.collapsed):after {
+  content: "-";
+}
+/*# sourceMappingURL=side-menu.component.css.map */
